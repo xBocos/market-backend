@@ -6,9 +6,9 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table (name = "compras")
-public class Producto {
+public class Compra {
     @Id
-    @GeneratedValue(Strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column (name = "id_compra")
     private Integer idCompra;
 
