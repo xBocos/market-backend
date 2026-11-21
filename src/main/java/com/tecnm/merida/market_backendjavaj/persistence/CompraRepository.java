@@ -17,10 +17,11 @@ public class CompraRepository implements PurchaseRepository {
     @Autowired
     private CompraCrudRepository compraCrudRepository;
 
+    @Autowired
     private PurchaseMapper mapper;
 
     @Override
-    public List<Purchase> getAll(){
+    public List<Purchase> getAll() {
         return mapper.toPurchases((List<Compra>) compraCrudRepository.findAll());
     }
 
@@ -31,9 +32,11 @@ public class CompraRepository implements PurchaseRepository {
     }
 
     @Override
-    public Purchase save (Purchase purchase) {
+    public Purchase save(Purchase purchase) {
         Compra compra = mapper.toCompra(purchase);
-        compra.getProductos().forEach(product -> product.setCompra(compra));
+        if (compra.getProductos() != null) {
+            compra.getProductos().forEach(product -> product.setCompra(compra));
+        }
         return mapper.toPurchase(compraCrudRepository.save(compra));
     }
 }
