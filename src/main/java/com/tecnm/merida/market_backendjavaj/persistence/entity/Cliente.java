@@ -12,6 +12,7 @@ public class Cliente {
     private String apellidos;
     private Long celular;
     private String direccion;
+    private String password;
 
     @OneToMany(mappedBy = "cliente")
     private List<Compra> compras;
@@ -31,6 +32,8 @@ public class Cliente {
     public void setDireccion(String direccion) { this.direccion = direccion; }
     public String getCorreoElectronico() { return correoElectronico; }
     public void setCorreoElectronico(String correoElectronico) { this.correoElectronico = correoElectronico; }
+    public String getPassword() { return password; }
+    public void setPassword(String password) { this.password = password; }
     public List<Compra> getCompras() { return compras; }
     public void setCompras(List<Compra> compras) { this.compras = compras; }
 }
